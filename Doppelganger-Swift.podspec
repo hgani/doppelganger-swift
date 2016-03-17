@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "nahive" => "nahive.github.io" }
   s.source           = { :git => "https://github.com/nahive/Doppelganger-Swift.git", :tag => "0.1.0" }
-  s.social_media_url = 'https://twitter.com/nahive'
-
+  s.social_media_url = 'https://twitter.com/nahive_'
   s.requires_arc = true
   s.source_files = 'Doppelganger-Swift/*.{swift}'
 

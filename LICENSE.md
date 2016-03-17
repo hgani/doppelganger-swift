@@ -1,4 +1,4 @@
-Copyright (c) 2015 Sash Zats <sash@zats.io>
+Copyright (c) 2016 nahive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
