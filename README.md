@@ -3,8 +3,6 @@
 
 
 # Doppelganger-Swift
-
-![Build Version](https://img.shields.io/github/release/nahive/Doppelganger-Swift.svg)
 [![Version](https://img.shields.io/cocoapods/v/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
 [![License](https://img.shields.io/cocoapods/l/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
 [![Platform](https://img.shields.io/cocoapods/p/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
