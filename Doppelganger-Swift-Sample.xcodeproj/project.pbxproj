@@ -13,6 +13,10 @@
 		4CEA12AC1C9B184400CCB2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CEA12AB1C9B184400CCB2DC /* Assets.xcassets */; };
 		4CEA12AF1C9B184400CCB2DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEA12AD1C9B184400CCB2DC /* LaunchScreen.storyboard */; };
 		4CEA12BA1C9B184400CCB2DC /* Doppelganger_Swift_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA12B91C9B184400CCB2DC /* Doppelganger_Swift_SampleTests.swift */; };
+		4CEA12C61C9B18A300CCB2DC /* NIArrayDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA12C51C9B18A300CCB2DC /* NIArrayDiff.swift */; };
+		4CEA12C81C9B1B2600CCB2DC /* NIArrayDiffUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA12C71C9B1B2600CCB2DC /* NIArrayDiffUtility.swift */; };
+		4CEA12CA1C9B224900CCB2DC /* UIKit+NIDoppelganger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA12C91C9B224900CCB2DC /* UIKit+NIDoppelganger.swift */; };
+		4CFA725B1C9B388F00EEF69A /* RowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA725A1C9B388F00EEF69A /* RowObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		4CEA12B51C9B184400CCB2DC /* Doppelganger-Swift-SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Doppelganger-Swift-SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CEA12B91C9B184400CCB2DC /* Doppelganger_Swift_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doppelganger_Swift_SampleTests.swift; sourceTree = "<group>"; };
 		4CEA12BB1C9B184400CCB2DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CEA12C51C9B18A300CCB2DC /* NIArrayDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIArrayDiff.swift; sourceTree = "<group>"; };
+		4CEA12C71C9B1B2600CCB2DC /* NIArrayDiffUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIArrayDiffUtility.swift; sourceTree = "<group>"; };
+		4CEA12C91C9B224900CCB2DC /* UIKit+NIDoppelganger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+NIDoppelganger.swift"; sourceTree = "<group>"; };
+		4CFA725A1C9B388F00EEF69A /* RowObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +85,10 @@
 		4CEA12A31C9B184400CCB2DC /* Doppelganger-Swift-Sample */ = {
 			isa = PBXGroup;
 			children = (
+				4CEA12C41C9B186A00CCB2DC /* Doppelganger-Swift */,
 				4CEA12A41C9B184400CCB2DC /* AppDelegate.swift */,
 				4CEA12A61C9B184400CCB2DC /* ViewController.swift */,
+				4CFA725A1C9B388F00EEF69A /* RowObject.swift */,
 				4CEA12A81C9B184400CCB2DC /* Main.storyboard */,
 				4CEA12AB1C9B184400CCB2DC /* Assets.xcassets */,
 				4CEA12AD1C9B184400CCB2DC /* LaunchScreen.storyboard */,
@@ -94,6 +104,16 @@
 				4CEA12BB1C9B184400CCB2DC /* Info.plist */,
 			);
 			path = "Doppelganger-Swift-SampleTests";
+			sourceTree = "<group>";
+		};
+		4CEA12C41C9B186A00CCB2DC /* Doppelganger-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				4CEA12C51C9B18A300CCB2DC /* NIArrayDiff.swift */,
+				4CEA12C71C9B1B2600CCB2DC /* NIArrayDiffUtility.swift */,
+				4CEA12C91C9B224900CCB2DC /* UIKit+NIDoppelganger.swift */,
+			);
+			name = "Doppelganger-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CEA12C61C9B18A300CCB2DC /* NIArrayDiff.swift in Sources */,
 				4CEA12A71C9B184400CCB2DC /* ViewController.swift in Sources */,
+				4CEA12CA1C9B224900CCB2DC /* UIKit+NIDoppelganger.swift in Sources */,
+				4CEA12C81C9B1B2600CCB2DC /* NIArrayDiffUtility.swift in Sources */,
 				4CEA12A51C9B184400CCB2DC /* AppDelegate.swift in Sources */,
+				4CFA725B1C9B388F00EEF69A /* RowObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,10 +353,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Doppelganger-Swift-Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nahive.Doppelganger-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -340,10 +367,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Doppelganger-Swift-Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nahive.Doppelganger-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -390,6 +419,7 @@
 				4CEA12C01C9B184400CCB2DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4CEA12C11C9B184400CCB2DC /* Build configuration list for PBXNativeTarget "Doppelganger-Swift-SampleTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +428,7 @@
 				4CEA12C31C9B184400CCB2DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
