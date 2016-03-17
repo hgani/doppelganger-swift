@@ -1,11 +1,11 @@
-<p align="center"><img src="https://raw.githubusercontent.com/nahive/Doppelganger-Swift/master/Screenshot_bad.gif" alt="bad ux" style="max-width:100%;" width="186px"></p>
-<p align="center"> <img src="https://raw.githubusercontent.com/nahive/Doppelganger-Swift/master/Screenshot.gif" alt="good ux" style="max-width:100%;" width="186px"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/nahive/Doppelganger-Swift/master/Screenshot_bad.gif" alt="bad ux" style="max-width:100%;" width="186px">
+ <img src="https://raw.githubusercontent.com/nahive/Doppelganger-Swift/master/Screenshot.gif" alt="good ux" style="max-width:100%;" width="186px"></p>
 
 
 # Doppelganger-Swift
 
 ![Build Version](https://img.shields.io/github/release/nahive/doppelganger-swift.svg)
-[![Build Status](https://travis-ci.org/nahive/spotify-notify.png?branch=master)](https://travis-ci.org/nahive/doppelganger-swift)
+[![Build Status](https://travis-ci.org/nahive/Doppelganger-Swift.png?branch=master)](https://travis-ci.org/nahive/doppelganger-swift)
 ##### *Inspired by [Doppelganger](https://github.com/Wondermall/Doppelganger) written in Swift*
 
 ## Features
@@ -15,7 +15,7 @@
 - [x] Example
 - [ ] Working with sections
 
-[Changelog](https://github.com/nahive/spotify-notify/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/nahive/Doppelganger-Swift/blob/master/CHANGELOG.md)
 
 ## Installation
 
