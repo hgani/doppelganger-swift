@@ -3,10 +3,11 @@
 
 
 # Doppelganger-Swift
-[![Version](https://img.shields.io/cocoapods/v/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
-[![License](https://img.shields.io/cocoapods/l/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
-[![Platform](https://img.shields.io/cocoapods/p/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger)
+[![Version](https://img.shields.io/cocoapods/v/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger-Swift)
+[![License](https://img.shields.io/cocoapods/l/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger-Swift)
+[![Platform](https://img.shields.io/cocoapods/p/Doppelganger-Swift.svg?style=flat-square)](http://cocoadocs.org/docsets/Doppelganger-Swift)
 [![Build Status](https://travis-ci.org/nahive/doppelganger-swift.svg?branch=master)](https://travis-ci.org/nahive/doppelganger-swift)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ##### *Inspired by [Doppelganger](https://github.com/Wondermall/Doppelganger) written in Swift*
 
 ## Features
@@ -24,6 +25,12 @@ Doppelganger-Swift is available through [CocoaPods](http://cocoapods.org). To in
 it, simply add the following line to your Podfile:
 ```
 pod "Doppelganger-Swift"
+```
+
+Doppelganger-Swift is available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+```
+github "nahive/Doppelganger-Swift"
 ```
 
 ## Using
