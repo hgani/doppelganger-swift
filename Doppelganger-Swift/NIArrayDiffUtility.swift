@@ -10,12 +10,12 @@ import Foundation
 
 class NIArrayDiffUtility<T :Hashable> {
   
-  private(set) var previousArray: [T]?
-  private(set) var currentArray: [T]?
+  fileprivate(set) var previousArray: [T]?
+  fileprivate(set) var currentArray: [T]?
   
-  private(set) var diff: [NIArrayDiff]?
+  fileprivate(set) var diff: [NIArrayDiff]?
   
-  class func diffForCurrentArray(currentArray: [T], previousArray: [T]) -> [NIArrayDiff]? {
+  class func diffForCurrentArray(_ currentArray: [T], previousArray: [T]) -> [NIArrayDiff]? {
     let utility = NIArrayDiffUtility(currentArray: currentArray, previousArray: previousArray)
     utility.performDiff()
     return utility.diff
@@ -26,7 +26,7 @@ class NIArrayDiffUtility<T :Hashable> {
     self.currentArray = currentArray
   }
   
-  private func performDiff(){
+  fileprivate func performDiff(){
     guard let previousArray = previousArray else {
       print("NIArrayDiffUtility -> previousArray in performDiff is nil")
       return
@@ -42,8 +42,8 @@ class NIArrayDiffUtility<T :Hashable> {
     print("previousSet : \(previousSet)")
     print("currentSet : \(currentSet)")
     
-    let deletedObjects = previousSet.subtract(currentSet)
-    let insertedObjects = currentSet.subtract(previousSet)
+    let deletedObjects = previousSet.subtracting(currentSet)
+    let insertedObjects = currentSet.subtracting(previousSet)
     print("deletedObjects : \(deletedObjects)")
     print("insertedObjects : \(insertedObjects)")
     
@@ -59,9 +59,9 @@ class NIArrayDiffUtility<T :Hashable> {
     diff = results
   }
   
-  private func deletionsForArray(array: [T], deletedObjects: Set<T>) -> [NIArrayDiff] {
+  fileprivate func deletionsForArray(_ array: [T], deletedObjects: Set<T>) -> [NIArrayDiff] {
     var result = [NIArrayDiff]()
-    for (index, obj) in array.enumerate() {
+    for (index, obj) in array.enumerated() {
       if !deletedObjects.contains(obj) {
         continue
       }
@@ -70,9 +70,9 @@ class NIArrayDiffUtility<T :Hashable> {
     return result
   }
   
-  private func insertionsForArray(array: [T], insertedObjects: Set<T>) -> [NIArrayDiff] {
+  fileprivate func insertionsForArray(_ array: [T], insertedObjects: Set<T>) -> [NIArrayDiff] {
     var result = [NIArrayDiff]()
-    for (index, obj) in array.enumerate() {
+    for (index, obj) in array.enumerated() {
       if !insertedObjects.contains(obj) {
         continue
       }
@@ -81,7 +81,7 @@ class NIArrayDiffUtility<T :Hashable> {
     return result
   }
   
-  private func moveDiffsWithDeletedObjects(deletedObjects: Set<T>, insertedObjects: Set<T>) -> [NIArrayDiff] {
+  fileprivate func moveDiffsWithDeletedObjects(_ deletedObjects: Set<T>, insertedObjects: Set<T>) -> [NIArrayDiff] {
     var delta = 0
     var result = [NIArrayDiff]()
     
@@ -95,16 +95,16 @@ class NIArrayDiffUtility<T :Hashable> {
       return result
     }
     
-    for (indexPrevious, objPrevious) in previousArray.enumerate() {
+    for (indexPrevious, objPrevious) in previousArray.enumerated() {
       if deletedObjects.contains(objPrevious) {
-        delta++
+        delta += 1
         continue
       }
       
       var localDelta = delta
-      for (indexCurrent, objCurrent) in currentArray.enumerate() {
+      for (indexCurrent, objCurrent) in currentArray.enumerated() {
         if insertedObjects.contains(objCurrent) {
-          localDelta--
+          localDelta -= 1
           continue
         }
         if objCurrent != objPrevious {

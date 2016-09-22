@@ -9,31 +9,31 @@
 import Foundation
 
 enum NIArrayDiffType {
-  case Move, Insert, Delete
+  case move, insert, delete
 }
 
 class NIArrayDiff {
-  private(set) var type: NIArrayDiffType!
-  private(set) var previousIndex: Int?
-  private(set) var currentIndex: Int?
+  fileprivate(set) var type: NIArrayDiffType!
+  fileprivate(set) var previousIndex: Int?
+  fileprivate(set) var currentIndex: Int?
   
-  static func arrayDiffForDeletionAtIndex(index: Int) -> NIArrayDiff {
+  static func arrayDiffForDeletionAtIndex(_ index: Int) -> NIArrayDiff {
     let instance = NIArrayDiff()
-    instance.type = .Delete
+    instance.type = .delete
     instance.previousIndex = index
     return instance
   }
   
-  static func arrayDiffForInsertionAtIndex(index: Int) -> NIArrayDiff {
+  static func arrayDiffForInsertionAtIndex(_ index: Int) -> NIArrayDiff {
     let instance = NIArrayDiff()
-    instance.type = .Insert
+    instance.type = .insert
     instance.currentIndex = index
     return instance
   }
   
-  static func arrayDiffForMoveFromIndex(fromIndex: Int, toIndex: Int) -> NIArrayDiff {
+  static func arrayDiffForMoveFromIndex(_ fromIndex: Int, toIndex: Int) -> NIArrayDiff {
     let instance = NIArrayDiff()
-    instance.type = .Move
+    instance.type = .move
     instance.previousIndex = fromIndex
     instance.currentIndex = toIndex
     return instance
@@ -41,11 +41,11 @@ class NIArrayDiff {
   
   var description: String {
     switch type {
-    case .Some(.Move):
+    case .some(.move):
       return "<\(NIArrayDiff.self): \(self)> {type=move; from=\(previousIndex); to=\(currentIndex)}"
-    case .Some(.Insert):
+    case .some(.insert):
       return "<\(NIArrayDiff.self): \(self)> {type=insertion; to=\(currentIndex)}"
-    case .Some(.Delete):
+    case .some(.delete):
       return "<\(NIArrayDiff.self): \(self)> {type=move; from=\(previousIndex)}"
     default:
       return ""

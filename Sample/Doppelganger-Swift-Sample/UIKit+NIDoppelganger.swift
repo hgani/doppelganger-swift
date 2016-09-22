@@ -9,18 +9,18 @@
 import UIKit
 
 extension UICollectionView {
-  func ni_applyBatchChangesForRows(array: [NIArrayDiff], inSection section: Int, completion: (()->())? = nil) {
-    var insertion = [NSIndexPath]()
-    var deletion = [NSIndexPath]()
+  func ni_applyBatchChangesForRows(_ array: [NIArrayDiff], inSection section: Int, completion: (()->())? = nil) {
+    var insertion = [IndexPath]()
+    var deletion = [IndexPath]()
     var moving = [NIArrayDiff]()
     
     for obj in array {
       switch obj.type {
-      case .Some(.Delete):
-        deletion.append(NSIndexPath(forRow: obj.previousIndex!, inSection: section))
-      case .Some(.Insert):
-        insertion.append(NSIndexPath(forRow: obj.currentIndex!, inSection: section))
-      case .Some(.Move):
+      case .some(.delete):
+        deletion.append(IndexPath(row: obj.previousIndex!, section: section))
+      case .some(.insert):
+        insertion.append(IndexPath(row: obj.currentIndex!, section: section))
+      case .some(.move):
         moving.append(obj)
       default:
         break
@@ -28,29 +28,29 @@ extension UICollectionView {
     }
     
     performBatchUpdates({ 
-      self.insertItemsAtIndexPaths(insertion)
-      self.deleteItemsAtIndexPaths(deletion)
+      self.insertItems(at: insertion)
+      self.deleteItems(at: deletion)
       for obj in moving {
-        self.moveItemAtIndexPath(NSIndexPath(forRow: obj.previousIndex!, inSection: section),
-          toIndexPath: NSIndexPath(forRow: obj.currentIndex!, inSection: section))
+        self.moveItem(at: IndexPath(row: obj.previousIndex!, section: section),
+          to: IndexPath(row: obj.currentIndex!, section: section))
       }
       }) { (finished) in
         completion?()
     }
   }
   
-  func ni_applyBatchChangesForSections(array: [NIArrayDiff], completion: (()->())? = nil) {
+  func ni_applyBatchChangesForSections(_ array: [NIArrayDiff], completion: (()->())? = nil) {
     let insertion = NSMutableIndexSet()
     let deletion = NSMutableIndexSet()
     var moving = [NIArrayDiff]()
     
     for obj in array {
       switch obj.type {
-      case .Some(.Delete):
-        deletion.addIndex(obj.previousIndex!)
-      case .Some(.Insert):
-        insertion.addIndex(obj.currentIndex!)
-      case .Some(.Move):
+      case .some(.delete):
+        deletion.add(obj.previousIndex!)
+      case .some(.insert):
+        insertion.add(obj.currentIndex!)
+      case .some(.move):
         moving.append(obj)
       default:
         break
@@ -58,8 +58,8 @@ extension UICollectionView {
     }
     
     performBatchUpdates({
-      self.insertSections(insertion)
-      self.deleteSections(deletion)
+      self.insertSections(insertion as IndexSet)
+      self.deleteSections(deletion as IndexSet)
       for obj in moving {
         self.moveSection(obj.previousIndex!,toSection: obj.currentIndex!)
       }
@@ -70,18 +70,18 @@ extension UICollectionView {
 }
 
 extension UITableView {
-  func ni_applyBatchChangesForRows(array: [NIArrayDiff], inSection section: Int, withRowAnimation animation: UITableViewRowAnimation) {
-    var insertion = [NSIndexPath]()
-    var deletion = [NSIndexPath]()
+  func ni_applyBatchChangesForRows(_ array: [NIArrayDiff], inSection section: Int, withRowAnimation animation: UITableViewRowAnimation) {
+    var insertion = [IndexPath]()
+    var deletion = [IndexPath]()
     var moving = [NIArrayDiff]()
     
     for obj in array {
       switch obj.type {
-      case .Some(.Delete):
-        deletion.append(NSIndexPath(forRow: obj.previousIndex!, inSection: section))
-      case .Some(.Insert):
-        insertion.append(NSIndexPath(forRow: obj.currentIndex!, inSection: section))
-      case .Some(.Move):
+      case .some(.delete):
+        deletion.append(IndexPath(row: obj.previousIndex!, section: section))
+      case .some(.insert):
+        insertion.append(IndexPath(row: obj.currentIndex!, section: section))
+      case .some(.move):
         moving.append(obj)
       default:
         break
@@ -89,27 +89,26 @@ extension UITableView {
     }
     
     beginUpdates()
-    deleteRowsAtIndexPaths(deletion, withRowAnimation: animation)
-    insertRowsAtIndexPaths(insertion, withRowAnimation: animation)
+    deleteRows(at: deletion, with: animation)
+    insertRows(at: insertion, with: animation)
     for obj in moving {
-      self.moveRowAtIndexPath((NSIndexPath(forRow: obj.previousIndex!, inSection: section),
-                               toIndexPath: NSIndexPath(forRow: obj.currentIndex!, inSection: section)))
+      moveRow(at: IndexPath(row: obj.previousIndex!, section: section), to: IndexPath(row: obj.currentIndex!, section: section))
     }
     endUpdates()
   }
   
-  func ni_applyBatchChangesForSections(array: [NIArrayDiff], withRowAnimation animation: UITableViewRowAnimation) {
+  func ni_applyBatchChangesForSections(_ array: [NIArrayDiff], withRowAnimation animation: UITableViewRowAnimation) {
     let insertion = NSMutableIndexSet()
     let deletion = NSMutableIndexSet()
     var moving = [NIArrayDiff]()
     
     for obj in array {
       switch obj.type {
-      case .Some(.Delete):
-        deletion.addIndex(obj.previousIndex!)
-      case .Some(.Insert):
-        insertion.addIndex(obj.currentIndex!)
-      case .Some(.Move):
+      case .some(.delete):
+        deletion.add(obj.previousIndex!)
+      case .some(.insert):
+        insertion.add(obj.currentIndex!)
+      case .some(.move):
         moving.append(obj)
       default:
         break
@@ -117,8 +116,8 @@ extension UITableView {
     }
     
     beginUpdates()
-    deleteSections(deletion, withRowAnimation: animation)
-    insertSections(insertion, withRowAnimation: animation)
+    deleteSections(deletion as IndexSet, with: animation)
+    insertSections(insertion as IndexSet, with: animation)
     for obj in moving {
        self.moveSection(obj.previousIndex!,toSection: obj.currentIndex!)
     }

@@ -11,34 +11,34 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
   
   @IBOutlet weak var tableView: UITableView!
-  private var dataSource = [RowObject]()
+  fileprivate var dataSource = [RowObject]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     generateDataSource()
   }
 
-  private func generateDataSource() {
+  fileprivate func generateDataSource() {
     
-    let newDataSource = RowObject.listOfRowObjects() as! [RowObject]
+    let newDataSource = RowObject.listOfRowObjects() 
     let diffs = NIArrayDiffUtility.diffForCurrentArray(newDataSource, previousArray: dataSource)
     dataSource = newDataSource
     
-    tableView.ni_applyBatchChangesForRows(diffs!, inSection: 0, withRowAnimation: .Right)
+    tableView.ni_applyBatchChangesForRows(diffs!, inSection: 0, withRowAnimation: .right)
     
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+    let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
       self.generateDataSource()
     }
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return dataSource.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-    let rowObject = dataSource[indexPath.row]
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let rowObject = dataSource[(indexPath as NSIndexPath).row]
     cell.contentView.backgroundColor = rowObject.color
     cell.textLabel?.text = rowObject.title
     return cell

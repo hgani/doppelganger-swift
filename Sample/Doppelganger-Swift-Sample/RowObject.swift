@@ -19,22 +19,22 @@ class RowObject {
   
   class func listOfRowObjects() -> [RowObject] {
     
-    func titleForIndex(index: Int) -> String {
-      let numberFormatter = NSNumberFormatter()
-      numberFormatter.numberStyle = .SpellOutStyle
+    func titleForIndex(_ index: Int) -> String {
+      let numberFormatter = NumberFormatter()
+      numberFormatter.numberStyle = .spellOut
       
       let number = arc4random_uniform(100)
-      let allLocales = NSLocale.availableLocaleIdentifiers()
-        .sort { _,_ in number > 50 }
+      let allLocales = Locale.availableIdentifiers
+        .sorted { _,_ in number > 50 }
       
       let localeIdentifier = allLocales[index%allLocales.count]
       
-      let locale = NSLocale(localeIdentifier: localeIdentifier)
+      let locale = Locale(identifier: localeIdentifier)
       numberFormatter.locale = locale
-      return numberFormatter.stringFromNumber(index)!
+      return numberFormatter.string(from: NSNumber(value: index))!
     }
     
-    func colorForIndex(index: Int) -> UIColor {
+    func colorForIndex(_ index: Int) -> UIColor {
       let number = arc4random_uniform(100)
       let colors = [UIColor(red: 0.725, green: 0.212, blue: 0.169, alpha: 1.000),
                     UIColor(red: 0.231, green: 0.694, blue: 0.353, alpha: 1.000),
@@ -48,7 +48,7 @@ class RowObject {
                     UIColor(red: 0.294, green: 0.573, blue: 0.859, alpha: 1.000),
                     UIColor(red: 0.588, green: 0.290, blue: 0.714, alpha: 1.000),
                     UIColor(red: 0.243, green: 0.745, blue: 0.600, alpha: 1.000)]
-        .sort { _,_ in number > 50 }
+        .sorted { _,_ in number > 50 }
       
       return colors[index%colors.count]
       
@@ -61,7 +61,7 @@ class RowObject {
       result.append(RowObject(color: colorForIndex(i), title: titleForIndex(i)))
     }
     let number = arc4random_uniform(100)
-    return result.sort { _,_ in number > 50 }
+    return result.sorted { _,_ in number > 50 }
   }
 }
 
@@ -80,7 +80,7 @@ extension RowObject: Hashable {
     return title.hash
   }
   
-  func isEqual(object: AnyObject?) -> Bool {
+  func isEqual(_ object: AnyObject?) -> Bool {
     if let object = object as? RowObject {
       return hashValue == object.hashValue
     } else {
