@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Doppelganger-Swift"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "Array diffs as collection view wants it - in Swift."
   s.description      = <<-DESC
                         Animated UITableView and UICollectionView reloading in Swift,
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://github.com/nahive/Doppelganger-Swift"
   s.license          = 'MIT'
   s.author           = { "nahive" => "nahive.github.io" }
-  s.source           = { :git => "https://github.com/nahive/Doppelganger-Swift.git", :tag => "0.1.0" }
+  s.source           = { :git => "https://github.com/nahive/Doppelganger-Swift.git", :tag => "0.2.0" }
   s.social_media_url = 'https://twitter.com/nahive_'
   s.requires_arc = true
   s.source_files = 'Doppelganger-Swift/*.{swift}'
