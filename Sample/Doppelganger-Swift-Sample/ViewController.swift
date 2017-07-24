@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   fileprivate var dataSource = [RowObject]()
@@ -18,8 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     generateDataSource()
   }
 
-  fileprivate func generateDataSource() {
-    
+  private func generateDataSource() {
     let newDataSource = RowObject.listOfRowObjects() 
     let diffs = NIArrayDiffUtility.diffForCurrentArray(newDataSource, previousArray: dataSource)
     dataSource = newDataSource
@@ -31,18 +30,19 @@ class ViewController: UIViewController, UITableViewDataSource {
       self.generateDataSource()
     }
   }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataSource.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    let rowObject = dataSource[(indexPath as NSIndexPath).row]
-    cell.contentView.backgroundColor = rowObject.color
-    cell.textLabel?.text = rowObject.title
-    return cell
-  }
+}
 
+extension ViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return dataSource.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		let rowObject = dataSource[(indexPath as NSIndexPath).row]
+		cell.contentView.backgroundColor = rowObject.color
+		cell.textLabel?.text = rowObject.title
+		return cell
+	}
 }
 
