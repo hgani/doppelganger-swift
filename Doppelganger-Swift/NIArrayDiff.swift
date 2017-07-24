@@ -9,48 +9,18 @@
 import Foundation
 
 enum NIArrayDiffType {
-  case move, insert, delete
-}
-
-class NIArrayDiff {
-  fileprivate(set) var type: NIArrayDiffType!
-  fileprivate(set) var previousIndex: Int?
-  fileprivate(set) var currentIndex: Int?
-  
-  static func arrayDiffForDeletionAtIndex(_ index: Int) -> NIArrayDiff {
-    let instance = NIArrayDiff()
-    instance.type = .delete
-    instance.previousIndex = index
-    return instance
-  }
-  
-  static func arrayDiffForInsertionAtIndex(_ index: Int) -> NIArrayDiff {
-    let instance = NIArrayDiff()
-    instance.type = .insert
-    instance.currentIndex = index
-    return instance
-  }
-  
-  static func arrayDiffForMoveFromIndex(_ fromIndex: Int, toIndex: Int) -> NIArrayDiff {
-    let instance = NIArrayDiff()
-    instance.type = .move
-    instance.previousIndex = fromIndex
-    instance.currentIndex = toIndex
-    return instance
-  }
-  
-  var description: String {
-    switch type {
-    case .some(.move):
-      return "<\(NIArrayDiff.self): \(self)> {type=move; from=\(previousIndex); to=\(currentIndex)}"
-    case .some(.insert):
-      return "<\(NIArrayDiff.self): \(self)> {type=insertion; to=\(currentIndex)}"
-    case .some(.delete):
-      return "<\(NIArrayDiff.self): \(self)> {type=move; from=\(previousIndex)}"
-    default:
-      return ""
-    }
-    
-  }
-  
+	case move(from: Int, to: Int)
+	case insert(new: Int)
+	case delete(old: Int)
+	
+	var description: String {
+		switch self {
+		case .move(let from, let to):
+			return "\(String(describing: self)) {type=move; from=\(from); to=\(to)}"
+		case .insert(let new):
+			return "\(String(describing: self)) {type=insertion; new=\(new)}"
+		case .delete(let old):
+			return "\(String(describing: self)) {type=delete; old=\(old)}"
+		}
+	}
 }
