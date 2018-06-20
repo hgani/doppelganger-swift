@@ -19,11 +19,11 @@ class ViewController: UIViewController {
   }
 
   private func generateDataSource() {
-    let newDataSource = RowObject.listOfRowObjects() 
-    let diffs = NIArrayDiffUtility.diffForCurrentArray(newDataSource, previousArray: dataSource)
-    dataSource = newDataSource
+    let newDataSource = RowObject.listOfRowObjects()
     
-    tableView.ni_applyBatchChangesForRows(diffs!, inSection: 0, withRowAnimation: .right)
+    let diffs = Doppelganger.difference(currentArray: newDataSource, previousArray: dataSource)
+    dataSource = newDataSource
+    tableView.performRowUpdates(array: diffs, inSection: 0, withRowAnimation: .left)
     
     let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     DispatchQueue.main.asyncAfter(deadline: delayTime) {
