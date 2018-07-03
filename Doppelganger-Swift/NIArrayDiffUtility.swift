@@ -8,14 +8,14 @@
 
 import Foundation
 
-class NIArrayDiffUtility<T :Hashable> {
+public class NIArrayDiffUtility<T :Hashable> {
 	
 	fileprivate(set) var previousArray: [T]?
 	fileprivate(set) var currentArray: [T]?
 	
 	fileprivate(set) var diff: [NIArrayDiffType]?
 	
-	class func diffForCurrentArray(_ currentArray: [T], previousArray: [T]) -> [NIArrayDiffType]? {
+	public class func diffForCurrentArray(_ currentArray: [T], previousArray: [T]) -> [NIArrayDiffType]? {
 		let utility = NIArrayDiffUtility(currentArray: currentArray, previousArray: previousArray)
 		utility.performDiff()
 		return utility.diff

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UICollectionView {
-	func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, completion: (()->())? = nil) {
+	public func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, completion: (()->())? = nil) {
 		var insertion = [IndexPath]()
 		var deletion = [IndexPath]()
 		var moving = [(IndexPath,IndexPath)]()
@@ -60,7 +60,7 @@ extension UICollectionView {
 }
 
 extension UITableView {
-	func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, withRowAnimation animation: UITableViewRowAnimation) {
+	public func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, withRowAnimation animation: UITableViewRowAnimation) {
 		
 		var insertion = [IndexPath]()
 		var deletion = [IndexPath]()

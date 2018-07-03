@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NIArrayDiffType {
+public enum NIArrayDiffType {
 	case move(from: Int, to: Int)
 	case insert(new: Int)
 	case delete(old: Int)
