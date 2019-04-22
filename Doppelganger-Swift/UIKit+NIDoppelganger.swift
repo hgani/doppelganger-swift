@@ -60,7 +60,7 @@ extension UICollectionView {
 }
 
 extension UITableView {
-	public func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, withRowAnimation animation: UITableViewRowAnimation) {
+    public func ni_applyBatchChangesForRows(_ array: [NIArrayDiffType], inSection section: Int, withRowAnimation animation: UITableView.RowAnimation) {
 		
 		var insertion = [IndexPath]()
 		var deletion = [IndexPath]()
@@ -84,7 +84,7 @@ extension UITableView {
 		endUpdates()
 	}
 	
-	func ni_applyBatchChangesForSections(_ array: [NIArrayDiffType], withRowAnimation animation: UITableViewRowAnimation) {
+    func ni_applyBatchChangesForSections(_ array: [NIArrayDiffType], withRowAnimation animation: UITableView.RowAnimation) {
 		let insertion = NSMutableIndexSet()
 		let deletion = NSMutableIndexSet()
 		var moving = [(Int, Int)]()
